@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Incipientus_TM")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+23f79f8a1fa12ee11136a571d79af99aa865983f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Incipientus_TM")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Incipientus_TM")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@types/plotly.js": "^2.33.4"
+  },
+  "devDependencies": {
+    "@types/chai": "^5.0.0",
+    "chai": "^5.1.1"
+  }
+}

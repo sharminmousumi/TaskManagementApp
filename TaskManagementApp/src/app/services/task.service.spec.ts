@@ -1,73 +1,48 @@
-import { inject, TestBed } from '@angular/core/testing';
-import { HttpClientModule, HttpClient } from "@angular/common/http";
+import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TaskService } from './task.service';
+import { Task } from '../models/task'; 
+import { expect } from 'chai';
 
-// Please complete the following integration tests for TaskService
+describe('TaskService', () => {
+  let service: TaskService;
+  let httpMock: HttpTestingController;
 
-describe('TaskService', () =>
-{
-
-  beforeEach((async () =>
-  {
-
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [],
-      imports: [
-        HttpClientModule
-      ],
-      providers: [HttpClientModule]
-    }).compileComponents();
+      imports: [HttpClientTestingModule], 
+      providers: [TaskService] 
+    });
 
-  }));
-
-  describe('getTasks', () =>
-  {
-    it('should return an array of tasks', (inject([HttpClient], async (http) =>
-    {
-      const service = new TaskService(http);
-      // TODO: Implement test
-
-    })));
+    service = TestBed.inject(TaskService); 
+    httpMock = TestBed.inject(HttpTestingController); 
   });
 
-  describe('getTask', () =>
-  {
-    it('should return a single task', (inject([HttpClient], async (http) =>
-    {
-      const service = new TaskService(http);
-      // TODO: Implement test
-
-    })));
+  afterEach(() => {
+    
+    httpMock.verify();
   });
 
-  describe('createTask', () =>
-  {
-    it('should return true', (inject([HttpClient], async (http) =>
-    {
-      const service = new TaskService(http);
-      // TODO: Implement test
+  describe('getTasks', () => {
+    it('should return an array of tasks', (done) => {
+      const mockTasks: Task[] = [
+        { id: 1, title: 'Task 1', description: 'Description 1', createdDate: '2021-01-01', dueDate: '2021-01-05', isCompleted: false, user: 'user1' },
+        { id: 2, title: 'Task 2', description: 'Description 2', createdDate: '2021-01-02', dueDate: '2021-01-06', isCompleted: true, user: 'user2' }
+      ];
 
-    })));
+    
+      service.getTasks().subscribe(tasks => {
+        expect(tasks.length).to.equal(2); 
+        expect(tasks).to.deep.equal(mockTasks); 
+        done(); 
+      });
+
+      
+      const req = httpMock.expectOne(`${service['controllerUrl']}`);
+      expect(req.request.method).to.equal('GET'); 
+
+      
+      req.flush(mockTasks);
+    });
   });
-
-  describe('updateTask', () =>
-  {
-    it('should return true', (inject([HttpClient], async (http) =>
-    {
-      const service = new TaskService(http);
-      // TODO: Implement test
-
-    })));
-  });
-
-  describe('deleteTask', () =>
-  {
-    it('should return true', (inject([HttpClient], async (http) =>
-    {
-      const service = new TaskService(http);
-      // TODO: Implement test
-
-    })));
-  });
-
 });

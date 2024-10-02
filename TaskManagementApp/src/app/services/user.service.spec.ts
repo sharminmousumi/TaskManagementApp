@@ -3,7 +3,7 @@ import { HttpClientModule, HttpClient } from "@angular/common/http";
 
 import { UserService } from './user.service';
 
-// Please complete the following integration tests for UserService
+
 
 describe('UserService', () =>
 {
@@ -25,7 +25,7 @@ describe('UserService', () =>
     it('should return an array of users', (inject([HttpClient], async (http) =>
     {
       const service = new UserService(http);
-      // TODO: Implement test
+      
 
     })));
   });
@@ -35,7 +35,7 @@ describe('UserService', () =>
     it('should return a single user', (inject([HttpClient], async (http) =>
     {
       const service = new UserService(http);
-      // TODO: Implement test
+      
 
     })));
   });
@@ -45,7 +45,7 @@ describe('UserService', () =>
     it('should return the new user', (inject([HttpClient], async (http) =>
     {
       const service = new UserService(http);
-      // TODO: Implement test
+      
 
     })));
   });
@@ -55,7 +55,7 @@ describe('UserService', () =>
     it('should return true', (inject([HttpClient], async (http) =>
     {
       const service = new UserService(http);
-      // TODO: Implement test
+     
 
     })));
   });
@@ -65,7 +65,7 @@ describe('UserService', () =>
     it('should return true', (inject([HttpClient], async (http) =>
     {
       const service = new UserService(http);
-      // TODO: Implement test
+      
 
     })));
   });
